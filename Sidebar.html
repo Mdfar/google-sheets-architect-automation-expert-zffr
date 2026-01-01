@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html> <head> <base target="_top"> <style> body { font-family: 'Arial', sans-serif; padding: 15px; color: #333; } .control-group { margin-bottom: 15px; } label { display: block; font-weight: bold; margin-bottom: 5px; } select, button { width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; } button { background: #4285F4; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; } button:hover { background: #357ae8; } </style> </head> <body> <div class="control-group"> <label for="unit">Indoor Unit Type</label> <select id="unit"> <option value="multi-7kw">Multi-Head 7kW</option> <option value="split-2kw">Split System 2.5kW</option> </select> </div> <div class="control-group"> <label for="heads">Number of Heads</label> <select id="heads"> <option value="1">1 Head</option> <option value="2">2 Heads</option> <option value="3">3 Heads</option> <option value="4">4 Heads</option> </select> </div> <button onclick="applySelection()">Apply to Selected Row</button>
+
+<script>
+  function applySelection() {
+    const data = {
+      unit: document.getElementById('unit').value,
+      heads: document.getElementById('heads').value
+    };
+    google.script.run.withSuccessHandler(() => {
+      console.log('Applied');
+    }).processSelection(data);
+  }
+</script>
+
+
+</body> </html>
